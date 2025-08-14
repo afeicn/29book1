@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智变：CIO的AI实战手记</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -14,17 +14,46 @@
         }
         
         body {
-            font-family: 'Inter', 'Noto Serif SC', serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #f5f1eb 0%, #ede4d3 100%);
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
             min-height: 100vh;
+        }
+        
+        /* 皱纹纸纹理背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 108, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(120, 119, 108, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 119, 108, 0.03) 0%, transparent 50%),
+                linear-gradient(90deg, transparent 79px, rgba(120, 119, 108, 0.04) 79px, rgba(120, 119, 108, 0.04) 81px, transparent 81px),
+                linear-gradient(0deg, transparent 79px, rgba(120, 119, 108, 0.04) 79px, rgba(120, 119, 108, 0.04) 81px, transparent 81px);
+            background-size: 200px 200px, 180px 180px, 220px 220px, 80px 80px, 80px 80px;
+            pointer-events: none;
+            z-index: -1;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         
         .header {
@@ -33,55 +62,80 @@
             padding: 40px 0;
         }
         
+        /* 主标题样式 - 居中且高对比度 */
         .main-title {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
             font-size: 3.5rem;
             font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+            pointer-events: none;
         }
         
         .subtitle {
             font-size: 1.5rem;
-            color: #7f8c8d;
-            font-weight: 300;
+            color: #3d2914;
+            font-weight: 400;
             margin-bottom: 30px;
+            font-style: italic;
         }
         
         .description {
             font-size: 1.2rem;
-            color: #34495e;
+            color: #3d2914;
             max-width: 800px;
             margin: 0 auto 40px;
             line-height: 1.8;
+            text-align: justify;
         }
         
         .chapters-section {
-            background: white;
+            background: linear-gradient(135deg, #faf6f0 0%, #f0e6d6 100%);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             margin-bottom: 40px;
+            border: 1px solid #e6d3b7;
         }
         
         .section-title {
+            color: #8b4513;
             font-size: 2rem;
-            color: #2c3e50;
+            font-weight: 600;
             margin-bottom: 30px;
             text-align: center;
             position: relative;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #d2b48c;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -3px;
             left: 50%;
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, #3498db, #9b59b6);
-            border-radius: 2px;
+            background: #8b4513;
         }
         
         .chapter-grid {
@@ -100,6 +154,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
         
         .chapter-card::before {
@@ -142,11 +197,12 @@
         }
         
         .project-info {
-            background: white;
+            background: linear-gradient(135deg, #f8f5f0 0%, #ede4d3 100%);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             margin-bottom: 40px;
+            border: 1px solid #d6c7b0;
         }
         
         .info-grid {
@@ -159,35 +215,38 @@
         .info-item {
             text-align: center;
             padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border: 1px solid #e6d3b7;
         }
         
         .info-icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            color: #3498db;
+            color: #8b4513;
         }
         
         .info-title {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #2c3e50;
+            color: #8b4513;
             margin-bottom: 10px;
         }
         
         .info-text {
-            color: #7f8c8d;
+            color: #3d2914;
             line-height: 1.6;
         }
         
         .footer {
             text-align: center;
             padding: 40px 0;
-            color: #7f8c8d;
+            color: #3d2914;
         }
         
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #3498db, #9b59b6);
+            background: linear-gradient(135deg, #8b4513, #a0522d);
             color: white;
             padding: 15px 40px;
             border-radius: 50px;
@@ -196,15 +255,25 @@
             font-size: 1.1rem;
             margin-top: 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
         }
         
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.4);
+        }
+        
+        strong {
+            color: #8b4513;
+            font-weight: 600;
         }
         
         @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 20px 15px;
+            }
+            
             .main-title {
                 font-size: 2.5rem;
             }
@@ -220,6 +289,11 @@
             
             .chapter-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
     </style>
