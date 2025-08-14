@@ -177,6 +177,45 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
+        /* 触摸设备优化 */
+        @media (hover: none) and (pointer: coarse) {
+            .chapter-card:hover {
+                transform: none;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            }
+            
+            .chapter-card:active {
+                transform: scale(0.98);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+        }
+        
+        /* 第一章10个小节的温暖渐变配色 */
+        .chapter-01 { background: linear-gradient(135deg, #d4a574 0%, #c19a6b 100%); }
+        .chapter-02 { background: linear-gradient(135deg, #b08968 0%, #a67c52 100%); }
+        .chapter-03 { background: linear-gradient(135deg, #c4a484 0%, #b8946f 100%); }
+        .chapter-04 { background: linear-gradient(135deg, #d2b48c 0%, #c4a484 100%); }
+        .chapter-05 { background: linear-gradient(135deg, #e6ccb2 0%, #d4a574 100%); }
+        .chapter-06 { background: linear-gradient(135deg, #b08968 0%, #a67c52 100%); }
+        .chapter-07 { background: linear-gradient(135deg, #c4a484 0%, #b8946f 100%); }
+        .chapter-08 { background: linear-gradient(135deg, #d2b48c 0%, #c4a484 100%); }
+        .chapter-09 { background: linear-gradient(135deg, #e6ccb2 0%, #d4a574 100%); }
+        .chapter-10 { background: linear-gradient(135deg, #b08968 0%, #a67c52 100%); }
+        
+        /* 12章主章节的温暖渐变配色 */
+        .chapter-main-01 { background: linear-gradient(135deg, #d4a574 0%, #c19a6b 100%); }
+        .chapter-main-02 { background: linear-gradient(135deg, #b08968 0%, #a67c52 100%); }
+        .chapter-main-03 { background: linear-gradient(135deg, #c4a484 0%, #b8946f 100%); }
+        .chapter-main-04 { background: linear-gradient(135deg, #d2b48c 0%, #c4a484 100%); }
+        .chapter-main-05 { background: linear-gradient(135deg, #e6ccb2 0%, #d4a574 100%); }
+        .chapter-main-06 { background: linear-gradient(135deg, #b08968 0%, #a67c52 100%); }
+        .chapter-main-07 { background: linear-gradient(135deg, #c4a484 0%, #b8946f 100%); }
+        .chapter-main-08 { background: linear-gradient(135deg, #d2b48c 0%, #c4a484 100%); }
+        .chapter-main-09 { background: linear-gradient(135deg, #e6ccb2 0%, #d4a574 100%); }
+        .chapter-main-10 { background: linear-gradient(135deg, #b08968 0%, #a67c52 100%); }
+        .chapter-main-11 { background: linear-gradient(135deg, #c4a484 0%, #b8946f 100%); }
+        .chapter-main-12 { background: linear-gradient(135deg, #d2b48c 0%, #c4a484 100%); }
+        
         .chapter-number {
             font-size: 3rem;
             font-weight: 700;
@@ -296,6 +335,129 @@
                 gap: 20px;
             }
         }
+        
+        /* 移动端适配 - 第一章小节导航 */
+        @media (max-width: 1200px) {
+            .chapter-grid[style*="repeat(5, 1fr)"] {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 15px !important;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .chapter-grid[style*="repeat(5, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+            }
+            
+            .chapter-card[style*="padding: 20px"] {
+                padding: 15px !important;
+            }
+            
+            .chapter-number[style*="font-size: 2rem"] {
+                font-size: 1.5rem !important;
+            }
+            
+            .chapter-title[style*="font-size: 1.1rem"] {
+                font-size: 1rem !important;
+            }
+            
+            .chapter-description[style*="font-size: 0.9rem"] {
+                font-size: 0.8rem !important;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .chapter-grid[style*="repeat(5, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .chapter-card[style*="padding: 20px"] {
+                padding: 12px !important;
+            }
+            
+            .chapter-number[style*="font-size: 2rem"] {
+                font-size: 1.3rem !important;
+            }
+            
+            .chapter-title[style*="font-size: 1.1rem"] {
+                font-size: 0.9rem !important;
+            }
+            
+            .chapter-description[style*="font-size: 0.9rem"] {
+                font-size: 0.75rem !important;
+            }
+            
+            .chapters-section {
+                padding: 25px 15px !important;
+            }
+            
+            .section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 20px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chapter-card[style*="padding: 20px"] {
+                padding: 10px !important;
+            }
+            
+            .chapter-number[style*="font-size: 2rem"] {
+                font-size: 1.2rem !important;
+            }
+            
+            .chapter-title[style*="font-size: 1.1rem"] {
+                font-size: 0.85rem !important;
+            }
+            
+            .chapter-description[style*="font-size: 0.9rem"] {
+                font-size: 0.7rem !important;
+            }
+            
+            .chapters-section {
+                padding: 20px 10px !important;
+            }
+            
+            .section-title {
+                font-size: 1.3rem !important;
+            }
+        }
+        
+        /* 移动端触摸优化 */
+        @media (max-width: 768px) {
+            .chapter-card {
+                min-height: 120px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .chapter-card:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+        }
+        
+        /* 移动端提示文字优化 */
+        .mobile-hint {
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 600px) {
+            .mobile-hint {
+                font-size: 1rem !important;
+                margin-bottom: 25px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-hint {
+                font-size: 0.9rem !important;
+                margin-bottom: 20px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -317,7 +479,7 @@
                 点击下方卡片，直接阅读第一章的各个小节内容
             </p>
             <div class="chapter-grid" style="grid-template-columns: repeat(5, 1fr); gap: 20px;">
-                <a href="web/01_AI分会场的开场白练习.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/01_AI分会场的开场白练习.html" class="chapter-card chapter-01" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">01</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">AI分会场的开场白练习</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -325,7 +487,7 @@
                     </p>
                 </a>
                 
-                <a href="web/02_别讲理论先把系统修好.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/02_别讲理论先把系统修好.html" class="chapter-card chapter-02" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">02</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">别讲理论，先把系统修好</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -333,7 +495,7 @@
                     </p>
                 </a>
                 
-                <a href="web/03_三个现场演示扭转乾坤.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/03_三个现场演示扭转乾坤.html" class="chapter-card chapter-03" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">03</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">三个现场演示扭转乾坤</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -341,7 +503,7 @@
                     </p>
                 </a>
                 
-                <a href="web/04_小红书文案演示惊艳全场.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/04_小红书文案演示惊艳全场.html" class="chapter-card chapter-04" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">04</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">小红书文案演示惊艳全场</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -349,7 +511,7 @@
                     </p>
                 </a>
                 
-                <a href="web/05_59块钱自费今晚就下载.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/05_59块钱自费今晚就下载.html" class="chapter-card chapter-05" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">05</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">"59块钱自费，今晚就下载"</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -357,7 +519,7 @@
                     </p>
                 </a>
                 
-                <a href="web/06_兰亭夜谈什么是AI.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/06_兰亭夜谈什么是AI.html" class="chapter-card chapter-06" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">06</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">兰亭夜谈：什么是AI</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -365,7 +527,7 @@
                     </p>
                 </a>
                 
-                <a href="web/07_刘志强举手我误解了AI.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/07_刘志强举手我误解了AI.html" class="chapter-card chapter-07" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">07</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">刘志强举手："我误解了AI"</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -373,7 +535,7 @@
                     </p>
                 </a>
                 
-                <a href="web/08_删掉总结PPT后的总结.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/08_删掉总结PPT后的总结.html" class="chapter-card chapter-08" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">08</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">删掉总结PPT后的总结</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -381,7 +543,7 @@
                     </p>
                 </a>
                 
-                <a href="web/09_CIO手记认知觉醒的管理思考.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/09_CIO手记认知觉醒的管理思考.html" class="chapter-card chapter-09" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">09</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">CIO手记-认知觉醒的管理思考</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -389,7 +551,7 @@
                     </p>
                 </a>
                 
-                <a href="web/10_CIO工具包AI认知启动包.html" class="chapter-card" style="padding: 20px;">
+                <a href="web/10_CIO工具包AI认知启动包.html" class="chapter-card chapter-10" style="padding: 20px;">
                     <div class="chapter-number" style="font-size: 2rem;">10</div>
                     <h3 class="chapter-title" style="font-size: 1.1rem;">CIO工具包（1）——AI认知启动包</h3>
                     <p class="chapter-description" style="font-size: 0.9rem;">
@@ -403,7 +565,7 @@
         <div class="chapters-section">
             <h2 class="section-title">章节导航</h2>
             <div class="chapter-grid">
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-01">
                     <div class="chapter-number">01</div>
                     <h3 class="chapter-title">AI觉醒时刻</h3>
                     <p class="chapter-description">
@@ -412,7 +574,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-02">
                     <div class="chapter-number">02</div>
                     <h3 class="chapter-title">理性选择</h3>
                     <p class="chapter-description">
@@ -421,7 +583,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-03">
                     <div class="chapter-number">03</div>
                     <h3 class="chapter-title">自建课程体系</h3>
                     <p class="chapter-description">
@@ -430,7 +592,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-04">
                     <div class="chapter-number">04</div>
                     <h3 class="chapter-title">技术路线抉择</h3>
                     <p class="chapter-description">
@@ -439,7 +601,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-05">
                     <div class="chapter-number">05</div>
                     <h3 class="chapter-title">场景落地困局</h3>
                     <p class="chapter-description">
@@ -448,7 +610,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-06">
                     <div class="chapter-number">06</div>
                     <h3 class="chapter-title">AI布道师</h3>
                     <p class="chapter-description">
@@ -457,7 +619,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-07">
                     <div class="chapter-number">07</div>
                     <h3 class="chapter-title">投入回报评估</h3>
                     <p class="chapter-description">
@@ -466,7 +628,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-08">
                     <div class="chapter-number">08</div>
                     <h3 class="chapter-title">产研AI化</h3>
                     <p class="chapter-description">
@@ -475,7 +637,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-09">
                     <div class="chapter-number">09</div>
                     <h3 class="chapter-title">敏捷团队</h3>
                     <p class="chapter-description">
@@ -484,7 +646,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-10">
                     <div class="chapter-number">10</div>
                     <h3 class="chapter-title">创意大赛</h3>
                     <p class="chapter-description">
@@ -493,7 +655,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-11">
                     <div class="chapter-number">11</div>
                     <h3 class="chapter-title">AI辅助内容生产</h3>
                     <p class="chapter-description">
@@ -502,7 +664,7 @@
                     </p>
                 </div>
                 
-                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                <div class="chapter-card chapter-main-12">
                     <div class="chapter-number">12</div>
                     <h3 class="chapter-title">数字员工愿景</h3>
                     <p class="chapter-description">
