@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智变：CIO的AI实战手记</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Noto Serif SC', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .description {
+            font-size: 1.2rem;
+            color: #34495e;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .chapters-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            border-radius: 2px;
+        }
+        
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .chapter-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .chapter-card:hover::before {
+            left: 100%;
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .chapter-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .chapter-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .project-info {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .info-text {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #7f8c8d;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .chapters-section,
+            .project-info {
+                padding: 20px;
+            }
+            
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 页面头部 -->
+        <div class="header">
+            <h1 class="main-title">智变：CIO的AI实战手记</h1>
+            <p class="subtitle">从首席信息官到首席智能官的破茧之路</p>
+            <p class="description">
+                这是一部关于企业数字化转型的实战指南，通过CIO观澜的视角，讲述如何在AI时代实现组织认知的革命。
+                从技术攻坚到跨部门博弈，再到AI引领企业变革，展现"智变"的完整过程。
+            </p>
+            <a href="web/chapter1.html" class="cta-button">开始阅读第一章</a>
+        </div>
+
+        <!-- 章节导航 -->
+        <div class="chapters-section">
+            <h2 class="section-title">章节导航</h2>
+            <div class="chapter-grid">
+                <a href="web/chapter1.html" class="chapter-card">
+                    <div class="chapter-number">01</div>
+                    <h3 class="chapter-title">AI觉醒时刻</h3>
+                    <p class="chapter-description">
+                        珀墨科技AI分会场的开场白练习，从理论讲解到现场演示的转变，
+                        霄哥的"59块钱自费"策略如何扭转乾坤，让团队真正拥抱AI。
+                    </p>
+                </a>
+                
+                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                    <div class="chapter-number">02</div>
+                    <h3 class="chapter-title">数据是氧气</h3>
+                    <p class="chapter-description">
+                        数据驱动决策的实践，观澜如何通过数据攻坚获取信任，
+                        技术与业务结合把价值显性化。
+                    </p>
+                </div>
+                
+                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                    <div class="chapter-number">03</div>
+                    <h3 class="chapter-title">ROI博弈</h3>
+                    <p class="chapter-description">
+                        财务中心司弦以"洛神研发超支"为由冻结预算，
+                        清鸢如何证明智能客服的价值，与财务部门的博弈过程。
+                    </p>
+                </div>
+                
+                <div class="chapter-card" style="background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);">
+                    <div class="chapter-number">04</div>
+                    <h3 class="chapter-title">AI引领企业</h3>
+                    <p class="chapter-description">
+                        数据驾驶舱大屏上，东南亚地图从"预警红"变为"增长绿"，
+                        AI如何真正引领企业变革，实现组织认知的革命。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 项目信息 -->
+        <div class="project-info">
+            <h2 class="section-title">项目特色</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">🎯</div>
+                    <h3 class="info-title">实战导向</h3>
+                    <p class="info-text">基于真实企业案例，提供可操作的AI落地策略和解决方案</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">🚀</div>
+                    <h3 class="info-title">变革管理</h3>
+                    <p class="info-text">从技术推广到组织变革，展现CIO在AI时代的角色转变</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">💡</div>
+                    <h3 class="info-title">认知升级</h3>
+                    <p class="info-text">通过具体场景和对话，帮助读者理解AI转型的本质和路径</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">🔗</div>
+                    <h3 class="info-title">业产融合</h3>
+                    <p class="info-text">技术与业务深度融合，实现AI价值的最大化</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>© 2024 智变：CIO的AI实战手记 | 一部关于企业AI转型的实战指南</p>
+        </div>
+    </div>
+</body>
+</html>
